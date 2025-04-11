@@ -1,0 +1,5 @@
+A. Average Order Value
+=SUM([TotalSales]) / COUNT(DISTINCT [InvoiceNo])
+
+B.  % Contribution of Each Country
+=CountryTotal / GrandTotal

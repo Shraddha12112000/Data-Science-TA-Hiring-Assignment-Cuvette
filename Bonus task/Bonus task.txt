@@ -1,0 +1,5 @@
+As a Teaching Assistant, I’d support students by creating a safe and encouraging learning environment. I’d identify where they are struggling—be it conceptual clarity or time management—and offer personalized guidance. I’d hold mini-doubt sessions, share crisp notes, break down tough problems, and recommend practical resources. For deadline issues, I’d help students plan realistically with clear milestones and check-ins, making learning feel achievable rather than overwhelming.
+
+To explain a complex topic like Gradient Descent, I’d start with a real-world analogy—like finding the lowest point in a foggy valley by taking small, careful steps downhill. Then, I’d break it down visually using graphs to show how the loss function changes. I’d explain how learning rate affects movement and why convergence matters. Finally, I’d use hands-on demos with code and encourage peer discussions to solidify understanding.
+
+My focus would always be on clarity, patience, and practical engagement.

@@ -1,0 +1,70 @@
+📘 SQL Queries - Chinook Database
+Author: Shraddha  
+Role Applied: Teaching Assistant (Cuvette)  
+Task: SQL Query Challenge using the Chinook Music Store Database  
+Tool: SQLiteOnline
+
+1️⃣ Top 5 Customers by Total Purchase Amount
+```sql
+SELECT c.CustomerId, c.FirstName || ' ' || c.LastName AS CustomerName,
+       ROUND(SUM(i.Total), 2) AS TotalPurchase
+FROM Customer c
+JOIN Invoice i ON c.CustomerId = i.CustomerId
+GROUP BY c.CustomerId
+ORDER BY TotalPurchase DESC
+LIMIT 5;
+```
+🔍 Description: This query calculates total purchase amount for each customer and lists the top 5 spenders.
+
+2️⃣ Most Popular Genre by Total Tracks Sold
+```sql
+SELECT g.Name AS Genre, COUNT(il.TrackId) AS TracksSold
+FROM InvoiceLine il
+JOIN Track t ON il.TrackId = t.TrackId
+JOIN Genre g ON t.GenreId = g.GenreId
+GROUP BY g.GenreId
+ORDER BY TracksSold DESC
+LIMIT 1;
+```
+🔍 Description: Identifies the most sold genre by counting track sales per genre.
+
+3️⃣ Employees Who Are Managers with Their Subordinates
+```sql
+SELECT m.EmployeeId AS ManagerID, 
+       m.FirstName || ' ' || m.LastName AS ManagerName,
+       e.EmployeeId AS SubordinateID,
+       e.FirstName || ' ' || e.LastName AS SubordinateName
+FROM Employee e
+JOIN Employee m ON e.ReportsTo = m.EmployeeId;
+```
+🔍 Description: Lists all managers and the employees who report to them.
+
+4️⃣ Most Sold Album by Each Artist
+```sql
+SELECT a.Name AS Artist, al.Title AS Album, COUNT(il.InvoiceLineId) AS Sales
+FROM InvoiceLine il
+JOIN Track t ON il.TrackId = t.TrackId
+JOIN Album al ON t.AlbumId = al.AlbumId
+JOIN Artist a ON al.ArtistId = a.ArtistId
+GROUP BY a.ArtistId, al.AlbumId
+HAVING Sales = (
+    SELECT MAX(COUNT(il2.InvoiceLineId))
+    FROM InvoiceLine il2
+    JOIN Track t2 ON il2.TrackId = t2.TrackId
+    JOIN Album al2 ON t2.AlbumId = al2.AlbumId
+    WHERE al2.ArtistId = a.ArtistId
+)
+ORDER BY Artist;
+```
+🔍 Description: Finds the most sold album for each artist based on invoice line counts.
+
+5️⃣ Monthly Sales Trend for the Year 2013
+```sql
+SELECT STRFTIME('%m', InvoiceDate) AS Month,
+       ROUND(SUM(Total), 2) AS MonthlySales
+FROM Invoice
+WHERE STRFTIME('%Y', InvoiceDate) = '2013'
+GROUP BY Month
+ORDER BY Month;
+```
+🔍 Description: Returns monthly sales totals for the year 2013.

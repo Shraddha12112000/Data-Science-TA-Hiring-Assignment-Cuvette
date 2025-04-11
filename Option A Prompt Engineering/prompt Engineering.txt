@@ -1,0 +1,21 @@
+Prompt Used:
+
+    "=[@Quantity]*[@UnitPrice] syntax is not correct"
+    "I want to calculate Total Sales for each row in Excel using Quantity and UnitPrice columns."
+
+AI Response:
+
+To fix the formula and calculate total sales row-wise, use this instead:
+=Quantity * UnitPrice
+
+If you're using an Excel table with structured references, try:
+=[@Quantity]*[@UnitPrice]
+Make sure both columns have valid numeric data and no blank cells. You can then drag the formula down or let Excel auto-fill.
+
+Reflection:
+
+What did the AI do well?
+The AI quickly identified the correct formula, explained why the error might occur, and gave structured reference and regular syntax versions, which was very helpful.
+
+What did I have to improve?
+I had to ensure the table format was applied in Excel, as the formula only works correctly within an Excel Table. I also had to manually verify that the column headers matched the field names exactly.
